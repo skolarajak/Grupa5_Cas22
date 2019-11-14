@@ -10,8 +10,72 @@ namespace Cas22
     {
         static void Main(string[] args)
         {
-            Liste();
+            //Liste();
+            ZadatakSumaListe();
             Console.ReadKey();
+        }
+
+        static void ZadatakSumaListe()
+        {
+            List<int> numbers = new List<int>();
+            bool stayInLoop = true;
+            string userEntry;
+            int enteredNum;
+            do
+            {
+                Console.WriteLine("Enter a number (leave blank to finish) > ");
+                userEntry = Console.ReadLine();
+                if (string.IsNullOrEmpty(userEntry))
+                {
+                    break;
+                }
+                enteredNum = Convert.ToInt32(userEntry);
+                numbers.Add(enteredNum);
+                
+            } while (stayInLoop);
+
+            Console.WriteLine("The sum of all entered numbers is {0}", CalculateSum(numbers));
+        }
+
+        static void ZadatakSumaListe2()
+        {
+            bool uslov;
+            List<int> unetiBrojevi = new List<int>();
+            int brojac = 0;
+
+            do
+            {
+                Console.Write("Molim Vas unesite jedan broj: ");
+                string vrednost = Console.ReadLine();
+
+                if (vrednost != "")
+                {
+                    uslov = true;
+                    int novaVrednost = Convert.ToInt32(vrednost);
+                    unetiBrojevi.Add(novaVrednost);
+                }
+                else
+                {
+                    foreach (int iteracija in unetiBrojevi)
+                    {
+                        brojac += iteracija;
+                    }
+                    Console.WriteLine("Suma brojeva je: {0}", brojac);
+                    break;
+                }
+            } while (uslov == false);
+
+        }
+
+        static int CalculateSum(List<int> numbers)
+        {
+            int sum = 0;
+
+            foreach(int num in numbers)
+            {
+                sum += num;
+            }
+            return sum;
         }
 
         static void Liste()
