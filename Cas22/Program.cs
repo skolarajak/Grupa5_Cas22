@@ -11,9 +11,50 @@ namespace Cas22
         static void Main(string[] args)
         {
             //Liste();
-            ZadatakSumaListe();
+            //ZadatakSumaListe();
+            //RadSaKlasom();
+            ZadatakSumaListeUzPomocKlase();
             Console.ReadKey();
         }
+
+        static void RadSaKlasom()
+        {
+            List<int> numbers = new List<int>();
+            numbers.Add(5);
+            numbers.Add(25);
+            numbers.Add(7);
+            numbers.Add(16);
+            numbers.Add(58);
+
+            FileClass.LogFileName = "C:\\Kurs\\Novi.log";
+            foreach(int num in numbers)
+            {
+                FileClass.Log("Uneti broj je " + Convert.ToString(num));
+            }
+        }
+
+        static void ZadatakSumaListeUzPomocKlase()
+        {
+            List<int> numbers = new List<int>();
+            bool stayInLoop = true;
+            string userEntry;
+            int enteredNum;
+            do
+            {
+                Console.WriteLine("Enter a number (leave blank to finish) > ");
+                userEntry = Console.ReadLine();
+                if (string.IsNullOrEmpty(userEntry))
+                {
+                    break;
+                }
+                enteredNum = Convert.ToInt32(userEntry);
+                numbers.Add(enteredNum);
+
+            } while (stayInLoop);
+
+            Console.WriteLine("The sum of all entered numbers is {0}", SumCalc.CalculateSum(numbers));
+        }
+
 
         static void ZadatakSumaListe()
         {
